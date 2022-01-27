@@ -1,0 +1,46 @@
+name: main
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Store branch name
+        run: echo "BUILD_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - name: Store commit hash
+        run: echo "BUILD_COMMIT=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_ENV
+      - name: Check current date
+        run: echo "BUILD_DATE=$(date +'%Y-%m-%d_%H.%M.%S')" >> $GITHUB_ENV
+      - name: Generate archive name
+        run: echo "BUILD_NAME=${BUILD_BRANCH}_${BUILD_COMMIT}_${BUILD_DATE}_build" >> $GITHUB_ENV
+
+      - name: Print archive name
+        run: echo "Archive will be called $BUILD_NAME"
+
+      # We don't want to install dos2unix
+      # https://unix.stackexchange.com/questions/279864/convert-windows-file-to-unix-on-old-server-without-dos2unix
+      - name: Ensure build script has Unix line endings
+        run: sed -i 's/\x0D$//' build_pdf.sh
+
+
+      # This seems to be required inside of act
+      - name: Setting build script as executable
+        run: chmod +x build_pdf.sh
+
+
+      - name: Building documents
+        uses: dante-ev/latex-action@2021-A
+        with:
+          entrypoint: ./build_pdf.sh
+
+
+      - name: Archive files
+        # Skip archive if running on act
+        if: ${{ !env.ACT }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.BUILD_NAME }}
+          path: bin

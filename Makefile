@@ -3,12 +3,7 @@ BUILDDIR = bin
 RESDIR = res
 
 all:
-	latexmk -f -pdf -output-directory=../$(BUILDDIR) -cd $(SOURCEDIR)/*.tex
-	latexmk -f -pdf -output-directory=../$(BUILDDIR) -cd $(SOURCEDIR)/*.tex
-	latexmk -f -c -output-directory=../$(BUILDDIR) -cd $(SOURCEDIR)/*.tex
+	./build_pdf.sh
 
 clean:
-	rm -rf $(BUILDDIR)/*
-
-clear:
-	rm -rf $(TEMPDIR)/*
+	rm -rf $(BUILDDIR)
