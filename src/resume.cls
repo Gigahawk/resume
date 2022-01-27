@@ -2,13 +2,15 @@
 
 % Set page margins to 1 inch
 \usepackage{geometry}
-\geometry{margin=1.0in}
+\geometry{margin=0.9in}
 
 % Include packages for fancy header
-\usepackage{fancyhdr}
+%\usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{float}
+\usepackage{tabularx}
 
 % Disable page numbering
 \pagenumbering{gobble}
@@ -28,40 +30,10 @@
 % Define colors
 \definecolor{ubcblue}{RGB}{0,40,89}
 \definecolor{ubcgrey}{RGB}{116,145,163}
+\definecolor{linkcolor}{RGB}{5,12,155}
 
 % Disable paragraph indent
 \setlength{\parindent}{0pt}
-
-% Redefine \maketitle to resemble Co-op template
-\fancypagestyle{ubcheader}{
-	% Add whitespace to bottom of header
-	\setlength{\headheight}{45pt}
-
-	% Remove header line and reset headers
-	\renewcommand{\headrulewidth}{0pt}
-	\fancyhead{}
-
-	% Logo on the left
-	\lhead{
-		\raisebox{-0.35\height}{
-			\includegraphics[width=0.49\textwidth]{../res/logo}
-		}
-	}
-
-	% Allow address thing on the right to extend past margins
-	\fancyheadoffset[R]{20pt}
-	\rhead{
-		\resizebox{0.53\textwidth}{!}{
-			\color{ubcblue}
-			\begin{tabular}{l l}
-				Engineering Co-op Program & Phone (604) 822-3022 \\
-				Faculty of Applied Science & Fax (604) 822-3449 \\
-				2385 East Mall & \href{mailto:eng.coop@ubc.ca}{eng.coop@ubc.ca} \\
-				Vancouver, BC Canada V6T 1Z4 & \url{www.ubcengineeringcoop.com}
-			\end{tabular}
-		}
-	}
-}	
 
 % Add new commands for title page
 \newcommand{\email}[1]{
@@ -83,14 +55,10 @@
 % Redefine title command to fit Co-op template
 \renewcommand{\maketitle}{
 	\begin{centering}
-		% Manually set pagestyle for header
-		\thispagestyle{ubcheader}
-
 		{\huge\bfseries\theauthor\par}
-		
-		\vspace{12pt}
 
-		\theaddress \\
+		\vspace{10pt}
+
 		Email: \href{mailto:\theemail}{\theemail} \\
 		Phone: \thephone \\
 		\theextras
@@ -104,10 +72,17 @@
 \usepackage{titlesec}
 
 % Allow hyperlinks (and also disable ugly bounding box around them)
-\usepackage[hidelinks]{hyperref}
+\usepackage[
+	colorlinks = true,
+	filecolor = linkcolor,
+	linkcolor = linkcolor,
+	urlcolor = linkcolor,
+	citecolor = linkcolor,
+	anchorcolor = linkcolor
+]{hyperref}
 
-% Remove styling for links
-\urlstyle{sf}
+%% Remove styling for links
+%\urlstyle{sf}
 
 % Set section font
 \allsectionsfont{\large\bfseries\sffamily\color{ubcgrey}}
@@ -123,23 +98,19 @@
 
 % Begin custom sections
 \newcommand{\TechnicalSkills}{
-	\section{Technical Skills} 
+	\section{Technical Skills}
 	\noindent\rule{\textwidth}{\secline}
 }
-\newcommand{\CoopStatus}{
-	\section{Academic \& Co-op Status} 
-	\noindent\rule{\textwidth}{\secline}
-}
-\newcommand{\CoopWorkExperience}{
-    \section{Co-op Work Experience}
+\newcommand{\WorkExperience}{
+    \section{Work Experience}
 	\noindent\rule{\textwidth}{\secline}
 }
 \newcommand{\TechnicalProjects}{
-	\section{Technical Projects} 
+	\section{Technical Projects}
 	\noindent\rule{\textwidth}{\secline}
 }
 \newcommand{\OtherWorkExperience}{
-	\section{Other Work Experience} 
+	\section{Other Work Experience}
 	\noindent\rule{\textwidth}{\secline}
 }
 \newcommand{\VolunteerWorkExperience}{
@@ -175,11 +146,11 @@
 	\begin{table}[H]
 		\centering
 		\begin{tabularx}{\textwidth}{s b}
-			\textbf{Academic Program:} & 
+			\textbf{Academic Program:} &
 			\textbullet\hspace{1.4pt} #1; #2 of 8 academic terms completed; % ugly hack to get this to line up properly
 			\begin{itemize}[]
 				\item Anticipated date of graduation: #3
-			\end{itemize} \\ 
+			\end{itemize} \\
 
 			\textbf{Co-op Status} &
 			\textbullet\hspace{1.4pt} Completed #4/5 Work terms; available for #5 beginning #6
@@ -198,7 +169,7 @@
             \iffirst
                 \firstfalse
             \else
-                $\bullet$\ 
+                $\bullet$\
             \fi
         \fi
     }\textbf{#1:}

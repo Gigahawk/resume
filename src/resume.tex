@@ -1,13 +1,12 @@
 \documentclass{resume}
-\usepackage{float}
-\usepackage{tabularx}
 
 \author{Jasper Chan}
-\address{Windsor Court, Richmond, British Columbia, V6V 2W6}
 \phone{(778) 848-3610}
-\email{jasper.chan@alumni.ubc.ca}
+\email{jasperchan515@gmail.com}
 \extras{
 	Github: \href{https://github.com/Gigahawk}{Gigahawk}
+    \\
+    LinkedIn: \href{https://www.linkedin.com/in/jasperchan/}{jasperchan}
 }
 \begin{document}
 \maketitle
@@ -20,39 +19,42 @@
     \item Signal Generator
     \item Multimeter
     \item Soldering Iron
-    \item Arduino
-    \item CircuitPython/MicroPython
 \end{TechSkills}
 \begin{TechSkills}{Languages}
-    \item C/C++
     \item Python
+    \item C\#
+    \item C/C++
     \item Dart/Flutter
     \item JavaScript/Node.js
-    \item Java
     \item MATLAB
 \end{TechSkills}
 \begin{TechSkills}{Software}
     \item SOLIDWORKS
-    \item Inventor
+    \item Fusion 360
+    \item KiCad
     \item Git
     \item Linux
     \item Vim
 \end{TechSkills}
 
-\CoopStatus
+\WorkExperience
 
-\CoopStatusFormat{Mechatronics Engineering}{5}{May 2021}{2}{4 or 8}{January 2020}
+\Job{\href{https://www.sierrawireless.com/}{Sierra Wireless}}{January 2020 -- December 2021}{Manufacturing Test Engineer Co-op}
+\begin{itemize}
+    \item Worked with a team to build software used to test devices in a factory for manufacturing defects
+    \item Reverse engineered 3rd party software to identify and work around bugs during integration
+    \item Wrote a Markdown build system that allows documentation to be stored as plain text and tracked in Git
+    \item Debugged and recommended/implemented solutions for malfunctioning PCBs
+\end{itemize}
 
-\CoopWorkExperience
-
-\Job{Sierra Wireless}{May 2019 -- August 2019}{Integration Engineer Co-op}
+\Job{\href{https://www.sierrawireless.com/}{Sierra Wireless}}{May 2019 -- August 2019}{Integration Engineer Co-op}
 \begin{itemize}
     \item Built and extended test infrastructure to streamline automatic and manual tests
     \item Dockerized test infrastructure so that it could be easily run in Jenkins
     \item Built a database to store and serve test metrics for individual firmware builds over a REST API
 \end{itemize}
 
-\Job{Precision Nanosystems}{September 2018 -- December 2018}{Instrumentation Engineer Co-op}
+\Job{\href{https://www.precisionnanosystems.com/}{Precision Nanosystems}}{September 2018 -- December 2018}{Instrumentation Engineer Co-op}
 \begin{itemize}
     \item Designed and built equipment to run experiments on microfluidics devices
     \item Wrote reports documenting the results of microfluidics experiments
@@ -60,29 +62,36 @@
 
 \TechnicalProjects
 
-\TechnicalProject{Low Waste Tangential Flow Filtration}{November 2018 -- December 2018}
+\TechnicalProject{\href{https://github.com/Gigahawk/mech423_final_project}{Light Pong Clone}}{November 2021 -- December 2021}
 \begin{itemize}
-    \item Built a device similar to the \href{http://spectrumlabs.com/filtration/KR2System.html}{KR2\textit{i} TFF System}
-    \item Uses two syringe pumps connected directly to the filter instead of a peristaltic pump to reduce material lost due to tubing
-    \item Each syringe pump is capable of determining the volume of fluid contained within a syringe and allows for a user to specify a specific concentration ratio.
+    \item Built a device similar to the currently unavailable \href{https://www.playlightpong.com/}{Light Pong} game
+    \item Designed and hand assembled a Li-ion battery management PCB to power the device
+    \item Designed and hand assembled a PCB based on the TI MSP430 to run the game firmware
+    \item Wrote firmware to mimic the behavior of Light Pong as shown in their \href{https://player.vimeo.com/video/616594964}{promo video}
 \end{itemize}
 
-\TechnicalProject{\href{https://github.com/Gigahawk/mech223project_asds}{ASDS 2.x Sea-based Landing Pad Scale Prototype}}{January 2018}
+\TechnicalProject{\href{https://github.com/Gigahawk/quartet}{Custom Keyboard}}{January 2021 -- Present}
 \begin{itemize}
-	\item Working with a group of 6 other students, worked through a formal engineering design process to build a boat capable of balancing and transporting model rockets
-	\item Implemented a battery monitoring system to limit throttle based on power output, improving stability by preventing motor brownouts that would cause the boat to rock
-	\item Wrote a class to remap controller inputs to a more intuitive control scheme allowing for greater control.
+    \item Designed and hand assembled PCBs to connect \href{https://learn.adafruit.com/adafruit-feather}{Adafruit Feather} compatible boards to a keyboard switch matrix and other peripherals
+    \item Uses slightly modified \href{https://github.com/Gigahawk/qmk_firmware/tree/quartet}{QMK Firmware}
 \end{itemize}
 
-\TechnicalProject{\href{https://github.com/Namtsua/bmbot}{BM Bot}}{January 2018}
+\TechnicalProject{\href{https://github.com/qmk/qmk_firmware/pull/13147}{AW20216 RGB Controller Driver}}{June 2021}
 \begin{itemize}
-	\item Working with a group of 3 other friends, built a Discord bot using Node.js that would track user's League of Legends games
-	\item Used the Riot Games API to detect when a user finished their game, and then would send messages to the user poking fun at them based on their performance
+    \item Wrote a driver for the publically unavailable AW20216 RGB LED controller IC using leaked and incomplete documentation
+    \item Desoldered (and resoldered) components from the PCB of a GMMK Pro keyboard to identify pin mappings necessary to configure the driver
+\end{itemize}
+
+\TechnicalProject{\href{https://github.com/Gigahawk/trezor-hw/tree/master/electronics/trezor_v1.1_usb_c}{USB-C Trezor One}}{July 2020}
+\begin{itemize}
+    \item Modified the \href{https://shop.trezor.io/product/trezor-one-white}{Trezor Model One} design files to use a USB-C connector
+    \item Hand assembled PCB and flashed secure production firmware onto the device
+    \item Modified the provided case designs and 3D printed it to verify fit with the new PCB
 \end{itemize}
 
 \StudentTeams
 
-\StudentTeam{\href{http://ubcorbit.com/}{UBC Orbit - ADCS}}{September 2018 -- Present}
+\StudentTeam{\href{http://ubcorbit.com/}{UBC Orbit - ADCS}}{September 2018 -- August 2020}
 \begin{itemize}
     \item Orbit is building a cubesat for the \href{https://www.csdcms.ca/}{Canadian Satellite Design Challenge}
     \item The Attitude Determination and Control subteam is designing a system that will allow the cubesat to localize itself while in orbit and reorient itself as necessary
@@ -94,25 +103,9 @@
 	\item Currently running cheapest 3D printing service on campus
 \end{itemize}
 
-
-\VolunteerWorkExperience
-
-\Job{Richmond 19\textsuperscript{th}}{September 2012 -- Present}{Scout Leader}
-\begin{itemize}
-	\item Plan and run engaging programs every week for youth aged 8-10
-	\item Teach survival and life skills at camping trips, fostering an appreciation for the outdoors
-\end{itemize}
-
 \Education
 
-\School{The University of British Columbia}{Expected May 2021}{Bachelor of Applied Science -- Mechanical Engineering}
+\School{The University of British Columbia}{Expected May 2022}{Bachelor of Applied Science -- Mechanical Engineering, Mechatronics Option}
 \School{Udemy}{2018}{Certified Scratch Programmer}
-
-\Interests
-
-\begin{itemize}
-	\item Billiards -- summer leagues
-	\item Sports -- Ultimate Frisbee, snowboarding
-\end{itemize}
 
 \end{document}

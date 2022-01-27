@@ -1,3 +1,10 @@
 **/cover_*
 **.pdf
 bin
+**.aux
+**.fdb_latexmk
+**.fls
+**.log
+**.out
+**.synctex*
+*.vscode
