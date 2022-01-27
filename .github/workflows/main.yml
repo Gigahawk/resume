@@ -15,7 +15,7 @@ jobs:
       - name: Check current date
         run: echo "BUILD_DATE=$(date +'%Y-%m-%d_%H.%M.%S')" >> $GITHUB_ENV
       - name: Generate archive name
-        run: echo "BUILD_NAME=${BUILD_BRANCH}_${BUILD_COMMIT}_${BUILD_DATE}_build" >> $GITHUB_ENV
+        run: echo "BUILD_NAME=${BUILD_BRANCH}_${BUILD_COMMIT}_${BUILD_DATE}_resume_build" >> $GITHUB_ENV
 
       - name: Print archive name
         run: echo "Archive will be called $BUILD_NAME"
