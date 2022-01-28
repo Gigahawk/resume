@@ -1,0 +1,45 @@
+\documentclass{transcript}
+
+\author{Jasper Chan}
+\studentnumber{37467164}
+
+\begin{document}
+
+\maketitle
+
+\csvreader[
+    head to column names,
+    longtable=
+        c
+        p{2in}
+        c
+        c
+        c
+        c
+        % Slight hack, seems the header breaks when the last column is p
+        p{0.5in}
+        c,
+    before table = \rowcolors{2}{ubcgrey!30}{ubcgrey2!30},
+    table head =
+        \hline\rowcolor{ubcblue}
+        \color{white}Course &
+        \centering\color{white}Course Name &
+        \color{white}Grade &
+        \color{white}Letter &
+        \color{white}Session &
+        \color{white}Term &
+        \centering\color{white}Class Average &
+        \color{white}Credits
+        \endhead
+]{../res/grades.csv}{}{%
+    \csvcoli &
+    \centering\csvcolii &
+    \csvcoliii &
+    \csvcoliv &
+    \csvcolv &
+    \csvcolvi &
+    \centering\csvcolx &
+    \csvcolix
+}
+
+\end{document}
