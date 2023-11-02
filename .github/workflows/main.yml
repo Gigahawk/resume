@@ -4,9 +4,9 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Store branch name
         run: echo "BUILD_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
@@ -20,27 +20,16 @@ jobs:
       - name: Print archive name
         run: echo "Archive will be called $BUILD_NAME"
 
-      # We don't want to install dos2unix
-      # https://unix.stackexchange.com/questions/279864/convert-windows-file-to-unix-on-old-server-without-dos2unix
-      - name: Ensure build script has Unix line endings
-        run: sed -i 's/\x0D$//' build_pdf.sh
-
-
-      # This seems to be required inside of act
-      - name: Setting build script as executable
-        run: chmod +x build_pdf.sh
-
-
-      - name: Building documents
-        uses: dante-ev/latex-action@2021-A
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
         with:
-          entrypoint: ./build_pdf.sh
+          nix_path: nixpkgs=channel:nixos-unstable
 
+      - name: Build docs
+        run: nix develop --command make
 
       - name: Archive files
-        # Skip archive if running on act
-        if: ${{ !env.ACT }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.BUILD_NAME }}
           path: bin
