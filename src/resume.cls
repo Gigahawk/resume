@@ -57,7 +57,7 @@
 	\begin{centering}
 		{\huge\bfseries\theauthor\par}
 
-		\vspace{10pt}
+		\vspace{8pt}
 
 		Email: \href{mailto:\theemail}{\theemail} \\
 		Phone: \thephone \\
@@ -88,7 +88,7 @@
 \allsectionsfont{\large\bfseries\sffamily\color{ubcgrey}}
 
 % Remove gap between section and rule
-\titlespacing\section{0pt}{11pt}{0pt}
+\titlespacing\section{0pt}{8pt}{0pt}
 
 % Remove numbering from sections
 \setcounter{secnumdepth}{0}
