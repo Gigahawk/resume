@@ -34,7 +34,7 @@ jobs:
       - run: ls bin
 
       - name: Archive files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.BUILD_NAME }}
           path: bin
