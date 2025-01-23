@@ -30,9 +30,6 @@ jobs:
       - name: Build docs
         run: nix develop --command make
 
-      - run: ls
-      - run: ls bin
-
       - name: Archive files
         uses: actions/upload-artifact@v4
         with:
