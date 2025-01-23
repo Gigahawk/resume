@@ -22,13 +22,13 @@ jobs:
       - name: Print archive name
         run: echo "Archive will be called $BUILD_NAME"
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v20
+      - name: Install Nix and activate devShell
+        uses: purplenoodlesoop/nix-act@v1
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
+          environment: devShell.x86_64-linux
 
       - name: Build docs
-        run: nix develop --command make
+        run: make
 
       - name: Archive files
         uses: actions/upload-artifact@v4
