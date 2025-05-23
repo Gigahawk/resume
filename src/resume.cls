@@ -2,7 +2,7 @@
 
 % Set page margins to 1 inch
 \usepackage{geometry}
-\geometry{margin=0.9in}
+\geometry{margin=0.8in}
 
 % Include packages for fancy header
 %\usepackage{fancyhdr}

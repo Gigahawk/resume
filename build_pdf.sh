@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 AUTHOR="Jasper Chan"
 
 mkdir -p bin
